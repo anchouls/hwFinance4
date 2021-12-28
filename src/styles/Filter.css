@@ -1,0 +1,14 @@
+.filter {
+    background-color: #868686;
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+
+.filter-item {
+    border: none;
+}
+
+.filter-item:hover {
+    border-left: 5px solid #94bad2;
+}
