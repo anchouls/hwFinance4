@@ -20,6 +20,8 @@ function App() {
         case 'data':
             pageObject = <DataViewer/>;
             break;
+        // TODO: no default case — an unexpected `page` value silently renders
+        // nothing instead of falling back to a known page or showing an error.
     }
 
     return (
