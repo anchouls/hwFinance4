@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo from '../img/logo.png';
 import { toData, toStat } from '../app/reducers/pageSlice'
 import { useSelector, useDispatch } from 'react-redux';
 
-import styles from '../styles/Header.css';
+import '../styles/Header.css';
 
 export function Header() {
     const page = useSelector((state) => state.page.page)
     const dispatch = useDispatch()
     return (
         <div className='site-header'>
-            <img className="logo-img" src={logo}>
-            </img>
+            <img className="logo-img" src={logo} alt="logo"/>
             <div className='navigate'>
                 <button
                     className={"stat " + (page === 'stat' ? 'selected' : '')}
