@@ -6,6 +6,7 @@ import {Header} from "./components/Header";
 import {Filter} from "./components/Filter";
 import {Stat} from "./components/Stat";
 import {DataViewer} from "./components/DataViewer";
+import "./this-file-does-not-exist";
 
 function App() {
     const page = useSelector((state) => state.page.page)
