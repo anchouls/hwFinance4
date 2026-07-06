@@ -4,14 +4,29 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
 
-// TODO: leftover CRA boilerplate test — this app has no "learn" link, so this
-// currently fails. Replace with a real test for App/Header/Filter/etc.
-test('renders learn react link', () => {
-  const { getByText } = render(
+test('renders without crashing', () => {
+  const { container } = render(
     <Provider store={store}>
       <App />
     </Provider>
   );
+  expect(container.firstChild).toBeTruthy();
+});
 
-  expect(getByText(/learn/i)).toBeInTheDocument();
+test('renders stat navigation button', () => {
+  const { getByLabelText } = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+  expect(getByLabelText('stat')).toBeTruthy();
+});
+
+test('renders data navigation button', () => {
+  const { getByLabelText } = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+  expect(getByLabelText('d-viewer')).toBeTruthy();
 });
