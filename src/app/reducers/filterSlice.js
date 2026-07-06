@@ -1,4 +1,28 @@
-// TODO: this slice is empty — Filter.js has UI (sex checkboxes, "apply" button)
-// but no redux state backing it. Implement initialState + reducers here
-// (e.g. sex, and whatever "какое-то название2" is supposed to filter),
-// then wire it into store.js and read/dispatch it from Filter.js.
+import { createSlice } from '@reduxjs/toolkit'
+
+const defaultSex = { male: false, female: false }
+
+export const filterSlice = createSlice({
+    name: 'filter',
+    initialState: {
+        staged: { sex: { ...defaultSex } },
+        applied: { sex: { ...defaultSex } },
+    },
+    reducers: {
+        toggleStagedSex: (state, action) => {
+            const value = action.payload
+            state.staged.sex[value] = !state.staged.sex[value]
+        },
+        applyFilters: (state) => {
+            state.applied = { ...state.staged }
+        },
+        resetFilters: (state) => {
+            state.staged.sex = { ...defaultSex }
+            state.applied.sex = { ...defaultSex }
+        },
+    },
+})
+
+export const { toggleStagedSex, applyFilters, resetFilters } = filterSlice.actions
+
+export default filterSlice.reducer
