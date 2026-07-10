@@ -1,16 +1,14 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import './styles/App.css';
 import {Header} from "./components/Header";
 import {Filter} from "./components/Filter";
 import {Stat} from "./components/Stat";
 import {DataViewer} from "./components/DataViewer";
-import "./this-file-does-not-exist";
 
 function App() {
     const page = useSelector((state) => state.page.page)
-    const dispatch = useDispatch()
 
     var pageObject = null
     switch (page) {
@@ -20,8 +18,8 @@ function App() {
         case 'data':
             pageObject = <DataViewer/>;
             break;
-        // TODO: no default case — an unexpected `page` value silently renders
-        // nothing instead of falling back to a known page or showing an error.
+        default:
+            pageObject = <DataViewer/>;
     }
 
     return (
