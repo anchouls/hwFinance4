@@ -6,7 +6,6 @@ import {Header} from "./components/Header";
 import {Filter} from "./components/Filter";
 import {Stat} from "./components/Stat";
 import {DataViewer} from "./components/DataViewer";
-import "./this-file-does-not-exist";
 
 function App() {
     const page = useSelector((state) => state.page.page)
@@ -20,8 +19,10 @@ function App() {
         case 'data':
             pageObject = <DataViewer/>;
             break;
-        // TODO: no default case — an unexpected `page` value silently renders
-        // nothing instead of falling back to a known page or showing an error.
+        default:
+            // Fall back to the data view for any unexpected `page` value.
+            pageObject = <DataViewer/>;
+            break;
     }
 
     return (
