@@ -9,7 +9,6 @@ import {DataViewer} from "./components/DataViewer";
 
 function App() {
     const page = useSelector((state) => state.page.page)
-    const theme = useSelector((state) => state.theme.mode)
 
     var pageObject = null
     switch (page) {
@@ -20,11 +19,11 @@ function App() {
             pageObject = <DataViewer/>;
             break;
         default:
-            pageObject = <Stat/>;
+            pageObject = <DataViewer/>;
     }
 
     return (
-        <div className={"App " + theme}>
+        <div className="App">
             <Header/>
             <div className='site-body'>
                 <Filter/>

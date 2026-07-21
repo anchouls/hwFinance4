@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import pageReducer from './reducers/pageSlice';
-import themeReducer from './reducers/themeSlice';
+import filterReducer from './reducers/filterSlice';
 
 export const store = configureStore({
   reducer: {
     page: pageReducer,
-    theme: themeReducer,
+    filter: filterReducer,
   },
 });

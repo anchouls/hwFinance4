@@ -1,24 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-    query: '',
-    onlyActive: false,
-}
-
 export const filterSlice = createSlice({
     name: 'filter',
-    initialState,
+    initialState: {
+        sex: 'all',
+        mood: 'all',
+    },
     reducers: {
-        setQuery: (state, action) => {
-            state.query = action.payload
+        setSex: (state, action) => {
+            state.sex = action.payload
         },
-        toggleOnlyActive: (state) => {
-            state.onlyActive = !state.onlyActive
+        setMood: (state, action) => {
+            state.mood = action.payload
         },
-        resetFilter: () => initialState,
     },
 })
 
-export const { setQuery, toggleOnlyActive, resetFilter } = filterSlice.actions
+export const { setSex, setMood } = filterSlice.actions
 
 export default filterSlice.reducer

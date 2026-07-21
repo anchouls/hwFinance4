@@ -1,13 +1,30 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { moodEntries } from '../data/moodEntries';
 
 import '../styles/DataView.css';
 
-// TODO: placeholder view — implement the actual data table/list, sourced from
-// the app's data + whatever filters end up in filterSlice.
 export function DataViewer() {
+    const filter = useSelector((state) => state.filter)
+
+    const entries = moodEntries.filter((entry) =>
+        (filter.sex === 'all' || entry.sex === filter.sex) &&
+        (filter.mood === 'all' || entry.mood === filter.mood)
+    )
+
     return (
         <div className="data-view">
-            <p> data view</p>
+            {entries.length === 0 ? (
+                <p>No entries match the current filter.</p>
+            ) : (
+                <ul>
+                    {entries.map((entry) => (
+                        <li key={entry.id}>
+                            {entry.name} — {entry.sex}, {entry.mood}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 }
