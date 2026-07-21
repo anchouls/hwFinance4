@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { moodEntries } from '../Data/moodEntries';
+import { moodEntries } from '../data/moodEntries';
 
 import '../styles/DataView.css';
 
