@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import './styles/App.css';
 import {Header} from "./components/Header";
 import {Filter} from "./components/Filter";
@@ -9,7 +9,7 @@ import {DataViewer} from "./components/DataViewer";
 
 function App() {
     const page = useSelector((state) => state.page.page)
-    const dispatch = useDispatch()
+    const theme = useSelector((state) => state.theme.mode)
 
     var pageObject = null
     switch (page) {
@@ -19,12 +19,12 @@ function App() {
         case 'data':
             pageObject = <DataViewer/>;
             break;
-        // TODO: no default case — an unexpected `page` value silently renders
-        // nothing instead of falling back to a known page or showing an error.
+        default:
+            pageObject = <Stat/>;
     }
 
     return (
-        <div className="App">
+        <div className={"App " + theme}>
             <Header/>
             <div className='site-body'>
                 <Filter/>
