@@ -1,17 +1,27 @@
 import React from 'react';
+import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
 
-// TODO: leftover CRA boilerplate test — this app has no "learn" link, so this
-// currently fails. Replace with a real test for App/Header/Filter/etc.
-test('renders learn react link', () => {
-  const { getByText } = render(
+const renderApp = () =>
+  render(
     <Provider store={store}>
       <App />
     </Provider>
   );
 
-  expect(getByText(/learn/i)).toBeInTheDocument();
+test('renders the header navigation buttons', () => {
+  const { getByLabelText } = renderApp();
+
+  expect(getByLabelText('stat')).toBeInTheDocument();
+  expect(getByLabelText('d-viewer')).toBeInTheDocument();
+});
+
+test('renders the data view by default', () => {
+  const { getByText } = renderApp();
+
+  // pageSlice initial state is `page: 'data'`, so DataViewer is shown.
+  expect(getByText(/data view/i)).toBeInTheDocument();
 });
