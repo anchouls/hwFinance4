@@ -1,0 +1,25 @@
+.data-view {
+    padding: 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.7em;
+}
+
+.data-table th,
+.data-table td {
+    border-bottom: 1px solid #bbbdd2;
+    padding: 6px 10px;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #ebf9e6;
+}
+
+.data-empty {
+    font-size: 0.7em;
+    color: #4b4aa1;
+}

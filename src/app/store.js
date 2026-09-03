@@ -1,8 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './reducers/pageSlice';
+import pageReducer from './reducers/pageSlice';
+import filterReducer from './reducers/filterSlice';
 
-export const store = configureStore({
+// Exported as a factory as well so tests can start from a clean state instead
+// of sharing the app-wide store between cases.
+export const createAppStore = () => configureStore({
   reducer: {
-    page: counterReducer,
+    page: pageReducer,
+    filter: filterReducer,
   },
 });
+
+export const store = createAppStore();
