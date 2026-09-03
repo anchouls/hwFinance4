@@ -1,0 +1,18 @@
+.Stat {
+    padding: 20px;
+    font-size: 0.8em;
+}
+
+.stat-total {
+    font-weight: bold;
+}
+
+.stat-list {
+    list-style: none;
+    padding: 0;
+}
+
+.stat-item {
+    border-bottom: 1px solid #bbbdd2;
+    padding: 6px 0;
+}
